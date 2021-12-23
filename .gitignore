@@ -1,0 +1,11 @@
+data/
+*.mp3
+*.ogg
+__pycache__/
+*.py[cod]
+
+# pyinstaller
+build/
+dist/
+*.manifest
+*.spec
