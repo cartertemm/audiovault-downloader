@@ -2,6 +2,8 @@
 
 A convenient downloader for audio described movies and TV shows found on the [Audio Vault](https://audiovault.net).
 
+[get latest binary release for Windows](https://github.com/cartertemm/audiovault-downloader/releases/download/v0.1/audiovault.exe)
+
 ## Introduction
 
 The [Audio Vault](https://audiovault.net/) is a non-profit, community-supported project that aims to provide free access to audio described movies and television shows for use by the blind and visually impaired. It is easily the largest resource of it's type. As of this writing (December 2021) there are currently over 8200 movies and 5100 shows spanning every conceivable category.
