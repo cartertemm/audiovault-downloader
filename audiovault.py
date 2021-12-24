@@ -1,6 +1,4 @@
-url = "https://audiovault.net"
-
-
+import sys
 import cgi
 import io
 import os
@@ -19,6 +17,7 @@ import progressbar
 import requests
 
 
+url = "https://audiovault.net"
 TIME_FORMAT = "%Y-%m-%d"
 loggedin = False
 session = requests.session()
@@ -248,6 +247,7 @@ def main():
 		"Find a TV show",
 		"View recently added movies",
 		"View recently added shows",
+		"Exit"
 	)
 	m = menu("What would you like to do? ", items)
 	if m == None:
@@ -265,6 +265,8 @@ def main():
 		else:
 			kind = "shows"
 		s = get_recents(kind)
+	elif m == 4:
+		sys.exit(0)
 	if s and len(s) > 0:
 		print("Listing "+kind)
 		items = [f"{name} ({id})" for (id, name, link) in s]
