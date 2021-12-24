@@ -17,6 +17,7 @@ import progressbar
 import requests
 
 
+version = "0.1"
 url = "https://audiovault.net"
 TIME_FORMAT = "%Y-%m-%d"
 loggedin = False
@@ -270,7 +271,7 @@ def main():
 	if s and len(s) > 0:
 		print("Listing "+kind)
 		items = [f"{name} ({id})" for (id, name, link) in s]
-		m = menu("Which would you like to download? ", items)
+		m = menu("Which would you like to download? (0 to go back): ", items)
 		if m == None:
 			return
 		if not loggedin:
@@ -282,5 +283,8 @@ def main():
 
 
 if __name__ == "__main__":
+	print("The audiovault.net downloader, version "+version)
+	print("Written by Carter Temm <https://github.com/cartertemm/audiovault-downloader>")
+	print()
 	while True:
 		main()
