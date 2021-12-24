@@ -25,7 +25,7 @@ All functionality provided by the site is also available from this program, with
 
 ## Contributions
 
-Want to add something? Find a place where I messed up? Please start out by opening a pull request and we can work from there.
+Want to add something? Find a place where I messed up? Please start out by [opening an issue](https://github.com/cartertemm/audiovault-downloader/issues) and we can work from there.
 
 Alternatively, if Github or Python isn't your thing, you can [email me](mailto:cartertemm@gmail.com) or give me a shout on Twitter ([@cartertemm](https://twitter.com/cartertemm)).
 
