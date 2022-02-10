@@ -276,7 +276,7 @@ def main():
 			return
 		if not loggedin:
 			authenticate()
-		print(f"Downloading {s[0]}")
+		print(f"Downloading {s[m][1]}")
 		download(s[m][2], progress_bar=True, requests_session=session, head_verifier=head_verifier)
 	else:
 		print("Nothing found")
