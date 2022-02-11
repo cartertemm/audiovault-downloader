@@ -1,6 +1,7 @@
 data/
 *.mp3
 *.ogg
+*.zip
 __pycache__/
 *.py[cod]
 
