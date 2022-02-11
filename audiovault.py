@@ -56,6 +56,19 @@ def menu(prompt, items):
 
 def authenticate():
 	global loggedin
+	config = configparser.ConfigParser()
+	try:
+		config["login"] = {}
+		config.read("config.ini")
+		l = login(config["login"]["email"], config["login"]["password"])
+		if l:
+			print("Login successful")
+			return True
+		print("The saved email or password is incorrect.")
+		if input("Would you like to try again?").lower().startswith("n"):
+			return False
+	except KeyError:
+		pass  # Ignore this, it probably just means auto login hasn't been set up.
 	while True:
 		email = input("Enter email: ")
 		password = getpass.getpass("Enter password: ")
@@ -66,7 +79,6 @@ def authenticate():
 			raise
 		if l:
 			loggedin = True
-			config = configparser.ConfigParser()
 			config["login"] = {}
 			config["login"]["email"] = email
 			config["login"]["password"] = password
