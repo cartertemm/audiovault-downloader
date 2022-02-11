@@ -5,6 +5,7 @@ import os
 import time
 import datetime
 import getpass
+import configparser
 
 # py 3 compat
 try:
@@ -65,6 +66,11 @@ def authenticate():
 			raise
 		if l:
 			loggedin = True
+			config = configparser.ConfigParser()
+			config["login"] = {}
+			config["login"]["email"] = email
+			config["login"]["password"] = password
+			config.write(open("config.ini", "w"))
 			print("Login successful")
 			return True
 		else:

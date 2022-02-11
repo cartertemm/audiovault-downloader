@@ -9,3 +9,6 @@ build/
 dist/
 *.manifest
 *.spec
+
+# Config files.
+config.ini
