@@ -65,7 +65,7 @@ def authenticate():
 			print("Login successful")
 			return True
 		print("The saved email or password is incorrect.")
-		if input("Would you like to try again?").lower().startswith("n"):
+		if input("Would you like to sign in manually?").lower().startswith("n"):
 			return False
 	except KeyError:
 		pass  # Ignore this, it probably just means auto login hasn't been set up.
