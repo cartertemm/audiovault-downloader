@@ -79,10 +79,11 @@ def authenticate():
 			raise
 		if l:
 			loggedin = True
-			config["login"] = {}
-			config["login"]["email"] = email
-			config["login"]["password"] = password
-			config.write(open("config.ini", "w"))
+			if input("Would you like to save your email and password?").lower().startswith("y"):
+				config["login"] = {}
+				config["login"]["email"] = email
+				config["login"]["password"] = password
+				config.write(open("config.ini", "w"))
 			print("Login successful")
 			return True
 		else:
