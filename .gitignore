@@ -1,6 +1,7 @@
 data/
 *.mp3
 *.ogg
+*.zip
 __pycache__/
 *.py[cod]
 
@@ -9,3 +10,6 @@ build/
 dist/
 *.manifest
 *.spec
+
+# Config files.
+config.ini
