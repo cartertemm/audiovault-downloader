@@ -248,10 +248,10 @@ def parse_pages(text):
 
 def parse_page(table):
 	res = []
-	for row in table.findAll("tr"):
-		id = row.findNext("td")
-		name = id.findNext("td")
-		link = name.findNext("td").find("a").get("href")
+	for row in table.find_all("tr"):
+		id = row.find_next("td")
+		name = id.find_next("td")
+		link = name.find_next("td").find("a").get("href")
 		if id:
 			id = id.text.strip()
 		if name:
