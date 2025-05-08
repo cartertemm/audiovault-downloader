@@ -17,7 +17,7 @@ import progressbar
 import requests
 
 
-version = "0.1"
+version = "0.2"
 url = "https://audiovault.net"
 TIME_FORMAT = "%Y-%m-%d"
 loggedin = False
