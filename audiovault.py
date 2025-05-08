@@ -1,5 +1,4 @@
 import sys
-import cgi
 import io
 import os
 import time
@@ -36,6 +35,15 @@ def bytes2human(n):
 			value = float(n) / prefix[s]
 			return '%.1f%s' % (value, s)
 	return "%sB" % n
+
+
+def get_filename_header(header):
+	"""Port of `cgi.parse_header` for parsing content disposition in Python versions > 3.13.
+	See PEP 594 for more info on why this is needed."""
+	from email.message import Message
+	msg = Message()
+	msg["content-disposition"] = header
+	return msg.get_filename()
 
 
 def menu(prompt, items):
@@ -114,11 +122,11 @@ def download(url, destination=None, callback=None, progress_bar=False, requests_
 	if total_size == 0:
 		return False
 	so_far = 0
-	_, params = cgi.parse_header(r.headers.get("content-disposition", ""))
+	fn = get_filename_header(r.headers.get("content-disposition", ""))
 	if not destination:
-		destination = params.get("filename")
+		destination = fn
 	elif os.path.isdir(destination):
-		destination = os.path.join(destination, params.get("filename", ""))
+		destination = os.path.join(destination, fn)
 	if not destination or destination[-1] == os.path.sep:
 		return False  # tried so hard, but it just wasn't meant to be. :(
 	with open(destination, "wb") as f:
