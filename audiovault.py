@@ -5,6 +5,7 @@ import time
 import datetime
 import getpass
 import configparser
+import zipfile
 
 # py 3 compat
 try:
@@ -150,6 +151,18 @@ def download(url, destination=None, callback=None, progress_bar=False, requests_
 				bar.update(percent)
 		if progress_bar:
 			bar.finish()
+	return destination
+
+
+def unzip(path):
+	try:
+		with zipfile.ZipFile(path) as z:
+			z.extractall(".")
+	except (zipfile.BadZipFile, OSError) as e:
+		print("Unable to unzip the file: "+str(e))
+		return False
+	os.remove(path)
+	print("Unzipped and deleted "+path)
 	return True
 
 
@@ -312,7 +325,10 @@ def main():
 		if not loggedin:
 			authenticate()
 		print(f"Downloading {s[m][1]}")
-		download(s[m][2], progress_bar=True, requests_session=session, head_verifier=head_verifier)
+		path = download(s[m][2], progress_bar=True, requests_session=session, head_verifier=head_verifier)
+		if path and zipfile.is_zipfile(path):
+			if input("Would you like the file to be unzipped in the current directory? This will delete the original.").lower().startswith("y"):
+				unzip(path)
 	else:
 		print("Nothing found")
 
